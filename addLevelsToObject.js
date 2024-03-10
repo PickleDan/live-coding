@@ -1,40 +1,40 @@
 // Объект на вход
 const object = {
-    a: {
-        d: {
-            h: 4
-        },
-        e: 2
+  a: {
+    d: {
+      h: 4,
     },
-    b: 1,
-    c: {
-        f: {
-            g: 3,
-            k: {}
-        }
-    }
+    e: 2,
+  },
+  b: 1,
+  c: {
+    f: {
+      g: 3,
+      k: {},
+    },
+  },
 };
 
 const addLevels = (obj) => {
-    const newObj = structuredClone(obj)
-    const stack = [{obj: newObj, level: 0}]
+  const newObj = structuredClone(obj);
+  const stack = [{ obj: newObj, level: 0 }];
 
-    while (stack.length > 0) {
-        const {obj, level} = stack.pop()
+  while (stack.length > 0) {
+    const { obj, level } = stack.pop();
 
-        for (let key in obj) {
-            if (typeof obj[key] === 'object' && typeof obj[key] !== null) {
-                obj[key].level = level + 1
-                stack.push({obj: obj[key], level: level + 1})
-            }
-        }
+    for (let key in obj) {
+      if (typeof obj[key] === "object" && typeof obj[key] !== null) {
+        obj[key].level = level + 1;
+        stack.push({ obj: obj[key], level: level + 1 });
+      }
     }
-    newObj.level = 0
+  }
+  newObj.level = 0;
 
-    return newObj
-}
+  return newObj;
+};
 
-console.log('### addLevels', addLevels(object))
+console.log("### addLevels", addLevels(object));
 
 // Данные на выход
 /*

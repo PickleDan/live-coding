@@ -7,34 +7,34 @@
 */
 
 const obj = {
-    a: {
-        b: {
-            c: 1,
-            d: 2
-        },
-        e: 3
+  a: {
+    b: {
+      c: 1,
+      d: 2,
     },
-    f: 4
+    e: 3,
+  },
+  f: 4,
 };
 
 const flattenObject = (obj) => {
-    const flattenObj = {}
-    const stack = [{obj, prefix: ''}]
+  const flattenObj = {};
+  const stack = [{ obj, prefix: "" }];
 
-    while (stack.length > 0) {
-        const {obj, prefix} = stack.pop()
+  while (stack.length > 0) {
+    const { obj, prefix } = stack.pop();
 
-        for (let key in obj) {
-            if (typeof obj[key] === 'object' && typeof obj[key] !== null) {
-                stack.push({obj: obj[key], prefix: prefix + key + '.'})
-            } else {
-                flattenObj[prefix + key] = obj[key]
-            }
-        }
+    for (let key in obj) {
+      if (typeof obj[key] === "object" && typeof obj[key] !== null) {
+        stack.push({ obj: obj[key], prefix: prefix + key + "." });
+      } else {
+        flattenObj[prefix + key] = obj[key];
+      }
     }
+  }
 
-    return flattenObj
-}
+  return flattenObj;
+};
 
 const flattenedObj = flattenObject(obj);
 console.log(flattenedObj);
