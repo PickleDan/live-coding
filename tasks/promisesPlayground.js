@@ -26,8 +26,6 @@ async function waitForResults(fetch1, fetch2) {
     result.push("error");
   }
 
-  console.log("### result", result);
-
   return result;
 }
 
