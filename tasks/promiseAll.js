@@ -38,5 +38,3 @@ promiseAll([
   resolve("second", 500),
   resolve("third", 800),
 ]).then(console.log);
-
-
