@@ -1,23 +1,32 @@
-console.log(1);
+setTimeout(() => {
+    console.log("timeout")
+}, 0)
 
-setTimeout(function () {
-  console.log(2);
-});
+console.log(1)
 
-Promise.resolve(3).then(console.log);
+new Promise(res => {
+    console.log('Promise')
+    setTimeout(() => {
+        console.log("777")
+        res()
+    }, 0)
+}).then(() => {
+    console.log("then1")
+}).then(() => {
+    console.log("then2")
+})
 
-console.log(4);
+console.log(4)
 
-setTimeout(function () {
-  console.log(5);
-}, 0);
+setTimeout(() => {
+    console.log("timeout2")
+}, 0)
 
-console.log(6);
-
-// const foo1 = () => {
-//     console.log('foo1')
-//
-//     return Promise.resolve().then(foo1)
-// }
-//
-// foo1();
+// 1,
+// Promise
+// 4
+// timeout
+// 777
+// then1
+// then2
+// timeout2

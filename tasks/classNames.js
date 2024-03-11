@@ -16,3 +16,5 @@ const classNames = (cn) => {
 console.log(
   classNames(["header", "menu", "footer", "menu", "item", "header", "menu"]),
 );
+
+// распределить по частоте использования и убрать дупликаты

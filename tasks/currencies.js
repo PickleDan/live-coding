@@ -48,5 +48,7 @@ const output = {
   uah: [10000, 0],
 };
 
+// нужно объединить валюты, а значением должен быть массив, где первый элемент сумма всех операций по buy, а второй элемент по sell
+
 console.log(currencies(input));
 console.log(currencies1(input));
