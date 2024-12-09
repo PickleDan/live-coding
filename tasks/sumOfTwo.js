@@ -28,4 +28,4 @@ const sumOfTwo2 = (arr, target) => {
   return [];
 };
 
-console.log(sumOfTwo2([2, 7, 11, 15], 14));
+console.log(sumOfTwo2([2, 7, 11, 15, 7], 14));

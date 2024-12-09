@@ -1,22 +1,18 @@
-function promiseAll(promises) {
+promiseAll = (promises) => {
+  const result = []
+
   return new Promise((resolve, reject) => {
-    const promisesResult = [];
-    let secondIndex = 0;
+      promises.forEach((promise, index) => {
+        Promise.resolve(promise).then((resolved) => {
+          result.push(resolved)
 
-    for (let index in promises) {
-      promises[index]
-        .then((data) => {
-          promisesResult.push(data);
-          secondIndex++;
-          if (secondIndex === promises.length) resolve(promisesResult);
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    }
-  });
+          if (promises.length - 1 === index) {
+            resolve(result)
+          }
+        }, reject)
+      })
+  })
 }
-
 const resolve = (value, timeout) => {
   return new Promise((res) => {
     setTimeout(() => {
@@ -34,7 +30,11 @@ const reject = (value, timeout) => {
 };
 
 promiseAll([
+  1,
   resolve("first", 300),
   resolve("second", 500),
   resolve("third", 800),
 ]).then(console.log);
+
+
+
